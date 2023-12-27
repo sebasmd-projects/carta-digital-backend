@@ -24,8 +24,8 @@ schema_view = get_schema_view(
         default_version='v1.0.0',
         description='API documentation and endpoint representations',
         # TODO terms_of_service YASG
-        # terms_of_service='https://www.google.com/policies/terms/',
-        contact=openapi.Contact(email='contact@pymedesk.com'),
+        terms_of_service='https://www.google.com/policies/terms/',
+        contact=openapi.Contact(email='info@sebasmoralesd.com'),
         license=openapi.License(name='BSD License'),
     ),
     public=True,

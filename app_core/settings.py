@@ -112,6 +112,7 @@ THIRD_APPS = [
     'auditlog',
     'corsheaders',
     'debug_toolbar',
+    'drf_yasg',
     'django_extensions',
     'import_export'
 ]
