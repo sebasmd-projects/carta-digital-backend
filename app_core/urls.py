@@ -8,13 +8,13 @@ from rest_framework import permissions
 
 admin_url = settings.ADMIN_URL
 
-handler400 = 'app_core.utils.views.handler400'
+handler400 = 'apps.utils.views.handler400'
 
-handler403 = 'app_core.utils.views.handler403'
+handler403 = 'apps.utils.views.handler403'
 
-handler404 = 'app_core.utils.views.handler404'
+handler404 = 'apps.utils.views.handler404'
 
-handler500 = 'app_core.utils.views.handler500'
+handler500 = 'apps.utils.views.handler500'
 
 
 # YASG schema view
@@ -82,3 +82,9 @@ urlpatterns_general += static(
     settings.MEDIA_URL,
     document_root=settings.MEDIA_ROOT
 )
+
+urlpatterns = [
+    
+]
+
+urlpatterns += urlpatterns_general

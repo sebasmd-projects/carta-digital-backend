@@ -94,14 +94,14 @@ class Command(BaseCommand):
         for exception in exceptions:
             self.stdout.write(self.style.ERROR(f"- {exception}"))
 
-    def print_skiped(self, items):
+    def print_skiped(self, items:list):
         self.stdout.write(self.style.SUCCESS(
             f'Skipped apps: {items}')
         )
 
     def get_write_file(self, app_name: str = None) -> list:
         apps_names_file_path = os.path.join(
-            self.base_dir, "apps", "public_apps", "utils", "data", "skip_apps.txt"
+            self.base_dir, "apps", "utils", "data", "skip_apps.txt"
         )
 
         with open(apps_names_file_path, 'r') as apps_names_file:

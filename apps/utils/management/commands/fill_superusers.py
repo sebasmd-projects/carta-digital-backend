@@ -39,7 +39,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         User = get_user_model()
         super_users_file = os.path.join(
-            settings.BASE_DIR, "apps", "public_apps", "utils", "data", "super_users.json"
+            settings.BASE_DIR, "apps", "utils", "data", "super_users.json"
         )
 
         if options['add'] or options['addcreate']:
