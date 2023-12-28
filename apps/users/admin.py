@@ -115,6 +115,6 @@ class UserModelAdmin(UserAdmin, ImportExportActionModelAdmin):
     def get_full_name(self, obj):
         return obj.get_full_name()
 
-    get_full_name.short_description = _('Full name')
+    get_full_name.short_description = _('Nombres completos')
 
-    get_age.short_description = _('Age')
+    get_age.short_description = _('Edad')
