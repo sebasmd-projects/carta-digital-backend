@@ -84,7 +84,10 @@ urlpatterns_general += static(
 )
 
 urlpatterns = [
-    
+    path(
+        '',
+        include('apps.users.urls')
+    ),
 ]
 
 urlpatterns += urlpatterns_general
