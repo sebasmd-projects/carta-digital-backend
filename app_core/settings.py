@@ -1,3 +1,4 @@
+import datetime
 import logging
 from pathlib import Path
 
@@ -27,7 +28,9 @@ env = environ.Env(
     DB_CONN_MAX_AGE=(int, 60),
     DB_CHARSET=(str, 'UTF8'),
     EMAIL_BACKEND=(str, 'django.core.mail.backends.smtp.EmailBackend'),
-    DEFAULT_FROM_EMAIL=(str, 'Django all in one project <noreply@sebasmoralesd.com>'),
+    DEFAULT_FROM_EMAIL=(
+        str, 'Django all in one project <noreply@sebasmoralesd.com>'
+    ),
     SERVER_EMAIL=(str, 'noreply@sebasmoralesd.com'),
     EMAIL_SECURITY_CONNECTION=(str, 'TLS'),
     EMAIL_PORT=(int, 587),
@@ -38,7 +41,7 @@ env = environ.Env(
     CELERY_BROKER_URL=(str, 'redis://127.0.0.1:6379'),
     DJANGO_ADMIN_FORCE_ALLAUTH=(bool, True),
     DJANGO_ACCOUNT_ALLOW_REGISTRATION=(bool, True),
-    CORS_ORIGIN_WHITELIST=(list, ['http://localhost:3000']),
+    CORS_ORIGIN_WHITELIST=(list, [r'^https://\w+\.localhost\.com$',]),
     DOMAIN=(str, 'localhost'),
     ERROR_TEMPLATE=(str, 'errors_template.html'),
     INTERNAL_IPS=(list, ['localhost', '127.0.0.1', '0.0.0.0'])
@@ -114,7 +117,10 @@ THIRD_APPS = [
     'debug_toolbar',
     'drf_yasg',
     'django_extensions',
-    'import_export'
+    'django_filters',
+    'import_export',
+    'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 CUSTOM_APPS = [
@@ -250,11 +256,21 @@ SWAGGER_SETTINGS = {
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend'
-    ]
+    ],
+}
+
+CORS_ALLOWED_ORIGIN_REGEXES = env(
+    'CORS_ORIGIN_WHITELIST'
+)
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=1)
 }
 
 # Email config
