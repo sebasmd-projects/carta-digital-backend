@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
+from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import (TokenBlacklistView,
                                             TokenObtainPairView,
                                             TokenRefreshView, TokenVerifyView)
@@ -116,6 +117,8 @@ class DecoratedTokenRefreshView(TokenRefreshView):
 
 
 class DecoratedTokenVerifyView(TokenVerifyView):
+    permission_classes = [AllowAny]
+
     @swagger_auto_schema(
         responses={
             status.HTTP_200_OK: TokenVerifyResponseSerializer,

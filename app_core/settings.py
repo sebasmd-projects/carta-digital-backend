@@ -270,7 +270,7 @@ CORS_ALLOWED_ORIGIN_REGEXES = env(
 )
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=1)
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=7)
 }
 
 # Email config
